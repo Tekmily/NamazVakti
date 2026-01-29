@@ -1,0 +1,117 @@
+{
+  "code": "es",
+  "ui": {
+    "title": "Horarios de oración",
+    "subtitle": "Estés donde estés en el mundo 🌍",
+    "locationTitle": "Selección de ubicación",
+    "locationHelp": "Puedes permitir la ubicación automática, introducir coordenadas o buscar por nombre de lugar.",
+    "locationButton": "Usar mi ubicación",
+    "latLabel": "Latitud",
+    "lonLabel": "Longitud",
+    "manualHelp": "En Google Maps, mantén pulsado un punto y copia la latitud/longitud que aparezca aquí.",
+    "manualButton": "Usar estas coordenadas",
+    "nameLabel": "Buscar por nombre de lugar",
+    "namePlaceholder": "Ej.: Estambul, Turquía",
+    "nameHelp": "Puedes escribir una ciudad, distrito, país o dirección completa.",
+    "statusWaiting": "Esperando a que se seleccione una ubicación...",
+    "statusGettingLocation": "Obteniendo la ubicación, por favor permítelo en tu navegador...",
+    "statusLocationDenied": "Permiso de ubicación denegado. Actívalo en ajustes o usa coordenadas/búsqueda por lugar.",
+    "statusLocationError": "Se produjo un error al obtener la ubicación.",
+    "statusInvalidCoords": "Please enter valid latitude and longitude.",
+    "statusInvalidName": "No location found with that name. Please check the spelling.",
+    "statusLoadingTimes": "Cargando horarios de oración...",
+    "statusSuccessTimes": "Prayer times loaded successfully.",
+    "statusErrorTimesPrefix": "Error while fetching times: ",
+    "inspTitle": "Daily Ayah",
+    "inspHelp": "These are short reminder-style translations. For full text, refer to a mushaf or a trusted source.",
+    "inspRefresh": "Show another ayah",
+    "refreshTimes": "Refresh times",
+    "footerSource": "Fuente de horarios: AlAdhan API (métodos internacionales, cálculo similar a Diyanet para Turquía).",
+    "footerNote": "Para la ubicación, los navegadores/iOS suelen requerir HTTPS. Si falla, usa coordenadas o búsqueda de lugar.",
+    "coordsPrefix": "Ubicación seleccionada:",
+    "calTitle": "Calendario de Ramadán",
+    "calHelp": "Muestra los horarios de imsak, fajr y magrib del Ramadán del año elegido para tu ubicación.",
+    "calYearLabel": "Año",
+    "calBtnText": "Cargar el calendario de Ramadán de este año",
+    "calStatusLoading": "Cargando el calendario de Ramadán...",
+    "calStatusNoData": "No se encontraron datos de Ramadán para este año. Comprueba el año y la ubicación.",
+    "calStatusErrorPrefix": "Error al cargar el calendario: ",
+    "countdownTitle": "Recordatorio de oración",
+    "countdownNoData": "Aún no se han cargado los horarios.",
+    "countdownPrefix": "Tiempo restante hasta el final de este tiempo",
+    "countdownFinished": "Todos los horarios de hoy han pasado.",
+    "currentTimeTitle": "Current Time",
+    "statusTimesLoaded": "Horarios de oración cargados correctamente.",
+    "statusTimesError": "Se produjo un error al obtener los horarios.",
+    "statusGeoSearchError": "No se encontró un lugar con ese nombre. Prueba otro nombre o añade el país.",
+    "languageLabel": "🌐 Idioma",
+    "notifButton": "Activar notificaciones",
+    "notifUnsupported": "Las notificaciones no son compatibles en este navegador",
+    "notifActive": "Notificaciones activas",
+    "notifDenied": "Permiso de notificaciones denegado",
+    "ramadanCountdownTitle": "Cuenta regresiva de Ramadán",
+    "ramadanCountdownText": "Cuenta atrás para suhur e iftar",
+    "statusLocationUnsupported": "Este navegador no admite servicios de ubicación.",
+    "notifImsakSoon": "Quedan 10 minutos para la hora de imsak",
+    "notifIftarSoon": "Quedan 10 minutos para la hora de iftar",
+    "countdownCurrentAndNext": "Ahora es {current} • {next} en {minutes} min",
+    "countdownCurrentAndGeneric": "Ahora es {current} • próxima oración en {minutes} min",
+    "ramadanImsakInTime": "Tiempo hasta el imsak: {time}",
+    "ramadanIftarInTime": "Tiempo hasta el iftar: {time}",
+    "ramadanImsakInMinutes": "Quedan {minutes} minutos para el imsak",
+    "ramadanIftarInMinutes": "Quedan {minutes} minutos para el iftar",
+    "ramadanInlinePlaceholder": "Durante el Ramadán, aquí aparecerá la cuenta atrás para imsak e iftar.",
+    "ramadanInlineNoData": "No hay datos de cuenta atrás de Ramadán para hoy."
+  },
+  "prayerLabels": {
+    "Imsak": "Imsak",
+    "Fajr": "Fajr",
+    "Sunrise": "Sunrise",
+    "Dhuhr": "Dhuhr",
+    "Asr": "Asr",
+    "Maghrib": "Maghrib",
+    "Isha": "Isha"
+  },
+  "calendarHeaders": {
+    "gregorian": "Gregorian Date",
+    "hijri": "Hijri Date",
+    "imsak": "Imsak",
+    "fajr": "Fajr",
+    "maghrib": "Maghrib",
+    "isha": "Isha"
+  },
+  "prayerTexts": {
+    "Imsak": [
+      "“Seek help through patience and prayer.” (Al‑Baqarah 2:45)",
+      "“Remember your Lord morning and evening.” (Al‑Insan 76:25)"
+    ],
+    "Fajr": [
+      "“The dawn prayer is witnessed.” (Al‑Isra 17:78)",
+      "“Celebrate His praise in the late hours of the night and at the ends of the day.” (Qaf 50:40)"
+    ],
+    "Sunrise": [
+      "“He has subjected the sun and the moon for you.” (Ibrahim 14:33)",
+      "“He is the One who causes the dawn to break.” (Al‑An‘am 6:96)"
+    ],
+    "Dhuhr": [
+      "“Establish prayer from the decline of the sun.” (Al‑Isra 17:78)",
+      "“Indeed, prayer has been decreed upon the believers at fixed times.” (An‑Nisa 4:103)"
+    ],
+    "Asr": [
+      "“By time, indeed mankind is in loss.” (Al‑Asr 103:1‑2)",
+      "“They establish prayer and are patient.” (Al‑A‘raf 7:170)"
+    ],
+    "Maghrib": [
+      "“Establish prayer until the darkness of the night.” (Al‑Isra 17:78)",
+      "“Glorify your Lord before the setting of the sun.” (Qaf 50:39)"
+    ],
+    "Isha": [
+      "“And in a part of the night prostrate yourself to Him.” (Al‑Insan 76:26)",
+      "“Stand for prayer at night, except for a little.” (Al‑Muzzammil 73:2)"
+    ]
+  },
+  "ramadanNotes": [
+    "“O you who believe, fasting is prescribed for you as it was prescribed for those before you.” (Al‑Baqarah 2:183)",
+    "“Whoever fasts Ramadan with faith and hoping for reward will have his past sins forgiven.” (Hadith meaning)"
+  ]
+}

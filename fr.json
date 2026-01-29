@@ -1,0 +1,117 @@
+{
+  "code": "fr",
+  "ui": {
+    "title": "Horaires de prière",
+    "subtitle": "Où que vous soyez dans le monde 🌍",
+    "locationTitle": "Sélection du lieu",
+    "locationHelp": "Vous pouvez autoriser la localisation automatique, saisir des coordonnées ou rechercher par nom de lieu.",
+    "locationButton": "Utiliser ma position",
+    "latLabel": "Latitude",
+    "lonLabel": "Longitude",
+    "manualHelp": "Sur Google Maps, faites un appui long sur un point puis copiez la latitude/longitude indiquée ici.",
+    "manualButton": "Utiliser ces coordonnées",
+    "nameLabel": "Recherche par nom de lieu",
+    "namePlaceholder": "Ex. : Istanbul, Turquie",
+    "nameHelp": "Vous pouvez saisir une ville, une région, un pays ou une adresse complète.",
+    "statusWaiting": "En attente de la sélection d’un lieu...",
+    "statusGettingLocation": "Obtention de la localisation, veuillez l’autoriser dans votre navigateur...",
+    "statusLocationDenied": "Autorisation de localisation refusée. Activez-la dans les paramètres ou utilisez les coordonnées/la recherche.",
+    "statusLocationError": "Une erreur est survenue lors de l’obtention de la localisation.",
+    "statusInvalidCoords": "Please enter valid latitude and longitude.",
+    "statusInvalidName": "No location found with that name. Please check the spelling.",
+    "statusLoadingTimes": "Chargement des horaires de prière...",
+    "statusSuccessTimes": "Prayer times loaded successfully.",
+    "statusErrorTimesPrefix": "Error while fetching times: ",
+    "inspTitle": "Daily Ayah",
+    "inspHelp": "These are short reminder-style translations. For full text, refer to a mushaf or a trusted source.",
+    "inspRefresh": "Show another ayah",
+    "refreshTimes": "Refresh times",
+    "footerSource": "Source des horaires : AlAdhan API (méthodes internationales, calcul proche de Diyanet pour la Turquie).",
+    "footerNote": "Pour la localisation, les navigateurs/iOS exigent généralement HTTPS. Si cela échoue, utilisez les coordonnées ou la recherche.",
+    "coordsPrefix": "Lieu sélectionné :",
+    "calTitle": "Calendrier de Ramadan",
+    "calHelp": "Affiche les horaires d’imsak, fajr et maghrib pour le Ramadan de l’année choisie à votre emplacement.",
+    "calYearLabel": "Année",
+    "calBtnText": "Charger le calendrier de Ramadan de cette année",
+    "calStatusLoading": "Chargement du calendrier de Ramadan...",
+    "calStatusNoData": "Aucune donnée de Ramadan trouvée pour cette année. Vérifiez l’année et le lieu.",
+    "calStatusErrorPrefix": "Erreur lors du chargement du calendrier : ",
+    "countdownTitle": "Rappel de prière",
+    "countdownNoData": "Aucun horaire n’a encore été chargé.",
+    "countdownPrefix": "Temps restant jusqu’à la fin de ce temps",
+    "countdownFinished": "Tous les horaires de prière d’aujourd’hui sont passés.",
+    "currentTimeTitle": "Current Time",
+    "statusTimesLoaded": "Horaires de prière chargés avec succès.",
+    "statusTimesError": "Une erreur est survenue lors du chargement des horaires.",
+    "statusGeoSearchError": "Aucun lieu trouvé pour ce nom. Essayez un autre nom ou ajoutez le pays.",
+    "languageLabel": "🌐 Langue",
+    "notifButton": "Activer les notifications",
+    "notifUnsupported": "Les notifications ne sont pas prises en charge par ce navigateur",
+    "notifActive": "Notifications actives",
+    "notifDenied": "Autorisation de notifications refusée",
+    "ramadanCountdownTitle": "Compte à rebours du Ramadan",
+    "ramadanCountdownText": "Compte à rebours jusqu’au souhour et à l’iftar",
+    "statusLocationUnsupported": "Ce navigateur ne prend pas en charge la géolocalisation.",
+    "notifImsakSoon": "Il reste 10 minutes avant l'heure de l'imsak",
+    "notifIftarSoon": "Il reste 10 minutes avant l'heure de l'iftar",
+    "countdownCurrentAndNext": "Actuellement {current} • {next} dans {minutes} min",
+    "countdownCurrentAndGeneric": "Actuellement {current} • prochaine prière dans {minutes} min",
+    "ramadanImsakInTime": "Temps restant avant l'imsak : {time}",
+    "ramadanIftarInTime": "Temps restant avant l'iftar : {time}",
+    "ramadanImsakInMinutes": "Il reste {minutes} minutes avant l'imsak",
+    "ramadanIftarInMinutes": "Il reste {minutes} minutes avant l'iftar",
+    "ramadanInlinePlaceholder": "Pendant le Ramadan, le compte à rebours pour l'imsak et l'iftar apparaîtra ici.",
+    "ramadanInlineNoData": "Aucune donnée de compte à rebours pour le Ramadan aujourd'hui."
+  },
+  "prayerLabels": {
+    "Imsak": "Imsak",
+    "Fajr": "Fajr",
+    "Sunrise": "Sunrise",
+    "Dhuhr": "Dhuhr",
+    "Asr": "Asr",
+    "Maghrib": "Maghrib",
+    "Isha": "Isha"
+  },
+  "calendarHeaders": {
+    "gregorian": "Gregorian Date",
+    "hijri": "Hijri Date",
+    "imsak": "Imsak",
+    "fajr": "Fajr",
+    "maghrib": "Maghrib",
+    "isha": "Isha"
+  },
+  "prayerTexts": {
+    "Imsak": [
+      "“Seek help through patience and prayer.” (Al‑Baqarah 2:45)",
+      "“Remember your Lord morning and evening.” (Al‑Insan 76:25)"
+    ],
+    "Fajr": [
+      "“The dawn prayer is witnessed.” (Al‑Isra 17:78)",
+      "“Celebrate His praise in the late hours of the night and at the ends of the day.” (Qaf 50:40)"
+    ],
+    "Sunrise": [
+      "“He has subjected the sun and the moon for you.” (Ibrahim 14:33)",
+      "“He is the One who causes the dawn to break.” (Al‑An‘am 6:96)"
+    ],
+    "Dhuhr": [
+      "“Establish prayer from the decline of the sun.” (Al‑Isra 17:78)",
+      "“Indeed, prayer has been decreed upon the believers at fixed times.” (An‑Nisa 4:103)"
+    ],
+    "Asr": [
+      "“By time, indeed mankind is in loss.” (Al‑Asr 103:1‑2)",
+      "“They establish prayer and are patient.” (Al‑A‘raf 7:170)"
+    ],
+    "Maghrib": [
+      "“Establish prayer until the darkness of the night.” (Al‑Isra 17:78)",
+      "“Glorify your Lord before the setting of the sun.” (Qaf 50:39)"
+    ],
+    "Isha": [
+      "“And in a part of the night prostrate yourself to Him.” (Al‑Insan 76:26)",
+      "“Stand for prayer at night, except for a little.” (Al‑Muzzammil 73:2)"
+    ]
+  },
+  "ramadanNotes": [
+    "“O you who believe, fasting is prescribed for you as it was prescribed for those before you.” (Al‑Baqarah 2:183)",
+    "“Whoever fasts Ramadan with faith and hoping for reward will have his past sins forgiven.” (Hadith meaning)"
+  ]
+}

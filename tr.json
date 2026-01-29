@@ -1,0 +1,114 @@
+{
+  "code": "tr",
+  "ui": {
+    "title": "Namaz Vakitleri",
+    "subtitle": "Dünyanın neresinde olursan ol 🌍",
+    "locationTitle": "Konum Seçimi",
+    "locationHelp": "Otomatik konum izni verebilir, koordinatları elle girebilir veya yer ismiyle arayabilirsin.",
+    "locationButton": "Konumumu kullan",
+    "latLabel": "Enlem (Latitude)",
+    "lonLabel": "Boylam (Longitude)",
+    "manualHelp": "Google Haritalar’da noktaya uzun basıp çıkan enlem/boylamı buraya girebilirsin.",
+    "manualButton": "Bu koordinatları kullan",
+    "nameLabel": "Yer adı ile arama",
+    "namePlaceholder": "Örn. İstanbul, Türkiye",
+    "nameHelp": "Şehir, ilçe, ülke veya adres yazabilirsin.",
+    "statusWaiting": "Konum seçilmesini bekliyor...",
+    "statusGettingLocation": "Konum alınıyor, lütfen tarayıcıdan izin verin...",
+    "statusLocationDenied": "Konum izni reddedildi. Ayarlardan açabilir veya koordinatları/yer adını kullanabilirsin.",
+    "statusLocationError": "Konum alınırken bir hata oluştu.",
+    "statusInvalidCoords": "Lütfen geçerli enlem ve boylam gir.",
+    "statusInvalidName": "Bu isimle konum bulunamadı. Yazılışı kontrol et.",
+    "statusLoadingTimes": "Namaz vakitleri getiriliyor...",
+    "statusSuccessTimes": "Namaz vakitleri başarıyla yüklendi.",
+    "statusErrorTimesPrefix": "Vakitler alınırken hata oluştu: ",
+    "inspTitle": "Bugüne Özel Ayet",
+    "inspHelp": "Ayet mealleri kısa ve hatırlatma amaçlıdır. Tam metin için mushaf veya güvenilir bir kaynağa bakın.",
+    "inspRefresh": "Farklı bir ayet göster",
+    "refreshTimes": "Vakitleri yenile",
+    "footerSource": "Vakit kaynağı: AlAdhan API (uluslararası yöntemler, Türkiye için Diyanet’e uygun hesaplama)",
+    "footerNote": "Konum için tarayıcı/iOS genelde HTTPS sayfalarda izin verir. Çalışmazsa koordinatları veya yer adını kullanabilirsin.",
+    "coordsPrefix": "Seçilen konum:",
+    "calTitle": "Ramazan İmsakiyesi",
+    "calHelp": "Seçili konum için ilgili yıldaki Ramazan ayına ait imsak, sabah ve akşam vakitlerini gösterir.",
+    "calYearLabel": "Yıl",
+    "calBtnText": "Bu yılın Ramazan imsakiyesini getir",
+    "calStatusLoading": "Ramazan imsakiyesi getiriliyor...",
+    "calStatusNoData": "Bu yıl için Ramazan verisi bulunamadı. Yılı ve konumu kontrol edin.",
+    "calStatusErrorPrefix": "İmsakiye alınırken hata oluştu: ",
+    "countdownTitle": "Vakit Hatırlatıcısı",
+    "countdownNoData": "Henüz vakit bilgisi alınmadı.",
+    "countdownPrefix": "Bu vaktin bitmesine kalan süre",
+    "countdownFinished": "Bugün için tüm vakitler sona erdi.",
+    "currentTimeTitle": "Şu Anki Saat",
+    "languageLabel": "🌐 Dil",
+    "notifButton": "Bildirimlere izin ver",
+    "notifUnsupported": "Bildirimler bu tarayıcıda desteklenmiyor",
+    "notifActive": "Bildirimler aktif",
+    "notifDenied": "Bildirim izni reddedildi",
+    "ramadanCountdownTitle": "Ramazan Geri Sayımı",
+    "ramadanCountdownText": "İmsak ve iftar için geri sayım",
+    "statusLocationUnsupported": "Tarayıcı konum servisini desteklemiyor.",
+    "notifImsakSoon": "İmsak vaktine son 10 dakika kaldı",
+    "notifIftarSoon": "İftar vaktine son 10 dakika kaldı",
+    "countdownCurrentAndNext": "Şu an {current} vakti • {next} vaktine {minutes} dk kaldı",
+    "countdownCurrentAndGeneric": "Şu an {current} vakti • Sonraki vakte {minutes} dk kaldı",
+    "ramadanImsakInTime": "İmsak vaktine {time} kaldı",
+    "ramadanIftarInTime": "İftara {time} kaldı",
+    "ramadanImsakInMinutes": "İmsak vaktine {minutes} dakika kaldı",
+    "ramadanIftarInMinutes": "İftar vaktine {minutes} dakika kaldı",
+    "ramadanInlinePlaceholder": "İmsak ve iftar geri sayımı Ramazan günlerinde burada görünecek.",
+    "ramadanInlineNoData": "Ramazan geri sayımı için bugün uygun veri bulunamadı."
+  },
+  "prayerLabels": {
+    "Imsak": "İmsak",
+    "Fajr": "Sabah (Fajr)",
+    "Sunrise": "Güneş",
+    "Dhuhr": "Öğle (Dhuhr)",
+    "Asr": "İkindi (Asr)",
+    "Maghrib": "Akşam (Maghrib)",
+    "Isha": "Yatsı (Isha)"
+  },
+  "calendarHeaders": {
+    "gregorian": "Miladi Tarih",
+    "hijri": "Hicri Tarih",
+    "imsak": "İmsak",
+    "fajr": "Sabah",
+    "maghrib": "Akşam",
+    "isha": "Yatsı"
+  },
+  "prayerTexts": {
+    "Imsak": [
+      "“Sabır ve namazla yardım isteyin.” (Bakara 2:45)",
+      "“Rabbinin adını sabah akşam an.” (İnsan 76:25)"
+    ],
+    "Fajr": [
+      "“Sabah namazı şahitlidir.” (İsrâ 17:78)",
+      "“Gecenin bir kısmında ve seherlerde O’nu tesbih et.” (Kâf 50:40)"
+    ],
+    "Sunrise": [
+      "“Güneşi ve ayı sizin hizmetinize verdi.” (İbrahim 14:33)",
+      "“O’dur sabahı yarıp çıkaran.” (En‘âm 6:96)"
+    ],
+    "Dhuhr": [
+      "“Güneş zevale yaklaştığında namazı kıl.” (İsrâ 17:78)",
+      "“Namaz müminlere vakitli olarak farz kılındı.” (Nisâ 4:103)"
+    ],
+    "Asr": [
+      "“Asra yemin olsun ki insan gerçekten ziyan içindedir.” (Asr 103:1-2)",
+      "“Sabredin ve namazı dosdoğru kılın.” (A‘râf 7:170)"
+    ],
+    "Maghrib": [
+      "“Güneşin batışına kadar namaz kıl.” (İsrâ 17:78)",
+      "“Gecenin bir kısmında da O’nu tesbih et.” (Tâhâ 20:130)"
+    ],
+    "Isha": [
+      "“Gecenin bir kısmında O’na secde et.” (İnsan 76:26)",
+      "“Gecenin bir bölümünde de O’na ibadet et.” (Müzzemmil 73:20)"
+    ]
+  },
+  "ramadanNotes": [
+    "“Ey iman edenler! Oruç sizden öncekilere farz kılındığı gibi size de farz kılındı.” (Bakara 2:183)",
+    "“Kim Ramazan’ı iman ederek ve karşılığını Allah’tan umarak yaşarsa, geçmiş günahları bağışlanır.” (Hadis meali)"
+  ]
+}

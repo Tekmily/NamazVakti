@@ -1,0 +1,117 @@
+{
+  "code": "ar",
+  "ui": {
+    "title": "مواقيت الصلاة",
+    "subtitle": "مهما كان مكانك في العالم 🌍",
+    "locationTitle": "اختيار الموقع",
+    "locationHelp": "يمكنك السماح بتحديد الموقع تلقائياً، أو إدخال الإحداثيات، أو البحث باسم المكان.",
+    "locationButton": "استخدم موقعي الحالي",
+    "latLabel": "خط العرض (Latitude)",
+    "lonLabel": "خط الطول (Longitude)",
+    "manualHelp": "في خرائط جوجل اضغط طويلاً على المكان ثم انسخ خط العرض وخط الطول وضعهما هنا.",
+    "manualButton": "استخدم هذه الإحداثيات",
+    "nameLabel": "البحث باسم المكان",
+    "namePlaceholder": "مثال: إسطنبول، تركيا",
+    "nameHelp": "يمكنك كتابة مدينة أو منطقة أو دولة أو عنوان كامل.",
+    "statusWaiting": "بجارٍ انتظار اختيار موقع...",
+    "statusGettingLocation": "يتم الحصول على الموقع، يرجى السماح من المتصفح...",
+    "statusLocationDenied": "تم رفض إذن الموقع. يمكنك تفعيله من الإعدادات أو استخدام الإحداثيات/اسم المكان.",
+    "statusLocationError": "حدث خطأ أثناء الحصول على الموقع.",
+    "statusInvalidCoords": "Please enter valid latitude and longitude.",
+    "statusInvalidName": "No location found with that name. Please check the spelling.",
+    "statusLoadingTimes": "جاري تحميل مواقيت الصلاة...",
+    "statusSuccessTimes": "Prayer times loaded successfully.",
+    "statusErrorTimesPrefix": "Error while fetching times: ",
+    "inspTitle": "Daily Ayah",
+    "inspHelp": "These are short reminder-style translations. For full text, refer to a mushaf or a trusted source.",
+    "inspRefresh": "Show another ayah",
+    "refreshTimes": "Refresh times",
+    "footerSource": "مصدر المواقيت: AlAdhan API (طرق دولية وحساب مناسب لتركيا).",
+    "footerNote": "للحصول على الموقع، يحتاج المتصفح عادةً إلى اتصال آمن HTTPS. إذا لم يعمل، استخدم الإحداثيات أو اسم المكان.",
+    "coordsPrefix": "الموقع المختار:",
+    "calTitle": "إمساكية رمضان",
+    "calHelp": "تعرض أوقات الإمساك والفجر والمغرب لشهر رمضان للسنة المختارة حسب موقعك.",
+    "calYearLabel": "السنة",
+    "calBtnText": "عرض إمساكية رمضان لهذه السنة",
+    "calStatusLoading": "جاري تحميل إمساكية رمضان...",
+    "calStatusNoData": "لا توجد بيانات لرمضان لهذه السنة. تحقق من السنة والموقع.",
+    "calStatusErrorPrefix": "حدث خطأ أثناء جلب الإمساكية: ",
+    "countdownTitle": "منبّه المواقيت",
+    "countdownNoData": "لم يتم تحميل المواقيت بعد.",
+    "countdownPrefix": "الوقت المتبقي لنهاية هذا الوقت",
+    "countdownFinished": "انتهت جميع مواقيت الصلاة لليوم.",
+    "currentTimeTitle": "Current Time",
+    "statusTimesLoaded": "تم تحميل مواقيت الصلاة بنجاح.",
+    "statusTimesError": "حدث خطأ أثناء جلب المواقيت.",
+    "statusGeoSearchError": "تعذر العثور على موقع لهذا الاسم. حاول كتابة اسم آخر أو أضف الدولة.",
+    "languageLabel": "🌐 اللغة",
+    "notifButton": "تفعيل الإشعارات",
+    "notifUnsupported": "الإشعارات غير مدعومة في هذا المتصفح",
+    "notifActive": "الإشعارات مفعّلة",
+    "notifDenied": "تم رفض إذن الإشعارات",
+    "ramadanCountdownTitle": "العد التنازلي لرمضان",
+    "ramadanCountdownText": "العد التنازلي للسحور والإفطار",
+    "statusLocationUnsupported": "هذا المتصفح لا يدعم خدمات تحديد الموقع.",
+    "notifImsakSoon": "تبقّت 10 دقائق على وقت الإمساك",
+    "notifIftarSoon": "تبقّت 10 دقائق على وقت الإفطار",
+    "countdownCurrentAndNext": "الآن وقت {current} • {next} بعد {minutes} دقيقة",
+    "countdownCurrentAndGeneric": "الآن وقت {current} • الصلاة التالية بعد {minutes} دقيقة",
+    "ramadanImsakInTime": "الوقت المتبقي على الإمساك: {time}",
+    "ramadanIftarInTime": "الوقت المتبقي على الإفطار: {time}",
+    "ramadanImsakInMinutes": "تبقّى {minutes} دقيقة على الإمساك",
+    "ramadanIftarInMinutes": "تبقّى {minutes} دقيقة على الإفطار",
+    "ramadanInlinePlaceholder": "خلال رمضان سيظهر هنا العد التنازلي للإمساك والإفطار.",
+    "ramadanInlineNoData": "لا توجد بيانات للعد التنازلي لرمضان لهذا اليوم."
+  },
+  "prayerLabels": {
+    "Imsak": "Imsak",
+    "Fajr": "Fajr",
+    "Sunrise": "Sunrise",
+    "Dhuhr": "Dhuhr",
+    "Asr": "Asr",
+    "Maghrib": "Maghrib",
+    "Isha": "Isha"
+  },
+  "calendarHeaders": {
+    "gregorian": "Gregorian Date",
+    "hijri": "Hijri Date",
+    "imsak": "Imsak",
+    "fajr": "Fajr",
+    "maghrib": "Maghrib",
+    "isha": "Isha"
+  },
+  "prayerTexts": {
+    "Imsak": [
+      "“Seek help through patience and prayer.” (Al‑Baqarah 2:45)",
+      "“Remember your Lord morning and evening.” (Al‑Insan 76:25)"
+    ],
+    "Fajr": [
+      "“The dawn prayer is witnessed.” (Al‑Isra 17:78)",
+      "“Celebrate His praise in the late hours of the night and at the ends of the day.” (Qaf 50:40)"
+    ],
+    "Sunrise": [
+      "“He has subjected the sun and the moon for you.” (Ibrahim 14:33)",
+      "“He is the One who causes the dawn to break.” (Al‑An‘am 6:96)"
+    ],
+    "Dhuhr": [
+      "“Establish prayer from the decline of the sun.” (Al‑Isra 17:78)",
+      "“Indeed, prayer has been decreed upon the believers at fixed times.” (An‑Nisa 4:103)"
+    ],
+    "Asr": [
+      "“By time, indeed mankind is in loss.” (Al‑Asr 103:1‑2)",
+      "“They establish prayer and are patient.” (Al‑A‘raf 7:170)"
+    ],
+    "Maghrib": [
+      "“Establish prayer until the darkness of the night.” (Al‑Isra 17:78)",
+      "“Glorify your Lord before the setting of the sun.” (Qaf 50:39)"
+    ],
+    "Isha": [
+      "“And in a part of the night prostrate yourself to Him.” (Al‑Insan 76:26)",
+      "“Stand for prayer at night, except for a little.” (Al‑Muzzammil 73:2)"
+    ]
+  },
+  "ramadanNotes": [
+    "“O you who believe, fasting is prescribed for you as it was prescribed for those before you.” (Al‑Baqarah 2:183)",
+    "“Whoever fasts Ramadan with faith and hoping for reward will have his past sins forgiven.” (Hadith meaning)"
+  ]
+}

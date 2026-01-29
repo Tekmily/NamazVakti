@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Namaz Vakitleri · Hafif & Güvenilir</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <div class="app-shell min-h-screen flex items-center justify-center p-4">
+    <main class="app-card w-full max-w-4xl mx-auto bg-slate-900/80 border border-slate-700/80 rounded-3xl shadow-2xl p-4 sm:p-6 space-y-5">
+      <header class="app-header">
+        <div class="title-block">
+          <h1 id="app-title">Namaz Vakitleri</h1>
+          <p id="app-subtitle" class="subtitle">
+            Dünyanın neresinde olursan ol 🌍
+          </p>
+        </div>
+        <div class="language-block">
+          <label for="language-select" id="language-label" class="language-label">🌐 Dil</label>
+          <select id="language-select" class="language-select">
+            <option value="auto">🌐 Otomatik</option>
+            <option value="tr">🇹🇷 Türkçe</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="ar">🇸🇦 العربية</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="hi">🇮🇳 हिन्दी</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ru">🇷🇺 Русский</option>
+          </select>
+          <div class="time-chip">
+            <span id="current-time-display">--:--:--</span>
+          </div>
+        </div>
+      </header>
+      <section class="countdown-section top-countdown">
+        <h2 id="countdown-title">Vakit Hatırlatıcısı</h2>
+        <p id="countdown-text" class="countdown-text"></p>
+        <button id="btn-enable-notifications" class="btn tertiary small-btn">
+          🔔 <span id="notif-btn-text">Bildirimlere izin ver</span>
+        </button>
+      </section>
+
+
+            
+
+
+      <section class="coords-display">
+        <div class="coords-pill" id="coords-pill">
+          <span class="coords-label" id="coords-label">Seçilen konum: —</span>
+        </div>
+        <div class="date-row">
+          <div id="date-line" class="date-line"></div>
+          <div id="hijri-line" class="hijri-line"></div>
+        </div>
+      </section>
+
+      <section class="location-section">
+        <h2 id="location-title">Konum Seçimi</h2>
+        <p id="location-help" class="hint-text">
+          Otomatik konum izni verebilir, koordinatları elle girebilir veya yer ismiyle arayabilirsin.
+        </p>
+
+        <div class="location-actions">
+          <button id="btn-use-auto" class="btn secondary">
+            <span class="icon">📍</span>
+            <span id="btn-use-auto-text">Konumumu kullan</span>
+          </button>
+        </div>
+
+        <div class="manual-location">
+          <div class="field-row">
+            <div class="field">
+              <label for="lat-input" id="lat-label">Enlem (Latitude)</label>
+              <input id="lat-input" type="number" step="0.0001" inputmode="decimal" placeholder="örn. 49.8728" />
+            </div>
+            <div class="field">
+              <label for="lon-input" id="lon-label">Boylam (Longitude)</label>
+              <input id="lon-input" type="number" step="0.0001" inputmode="decimal" placeholder="örn. 8.6512" />
+            </div>
+          </div>
+          <p id="manual-help" class="hint-text small">
+            Google Haritalar’da noktaya uzun basıp çıkan enlem/boylamı buraya girebilirsin.
+          </p>
+          <button id="btn-use-manual" class="btn ghost">
+            ✅ <span id="btn-use-manual-text">Bu koordinatları kullan</span>
+          </button>
+        </div>
+
+        <div class="name-location">
+          <label for="name-input" id="name-label">Yer adı ile arama</label>
+          <div class="name-row">
+            <input id="name-input" type="text" placeholder="Örn. İstanbul, Türkiye" />
+            <button id="btn-search-name" class="btn ghost small-btn">
+              🔍 <span id="btn-search-name-text">Ara</span>
+            </button>
+          </div>
+          <p id="name-help" class="hint-text small">
+            Şehir, ilçe, ülke veya tam adres yazabilirsin.
+          </p>
+        </div>
+      </section>
+
+      <section class="status-section">
+        <p id="status" class="status info">
+          Konum seçilmesini bekliyor...
+        </p>
+      </section>
+
+      
+
+      
+
+
+      <section class="prayers-section">
+        <div class="prayer-card">
+          <div class="prayer-header">
+            <h2 id="prayer-times-title">Namaz Vakitleri</h2>
+            <button id="btn-refresh-times" class="btn secondary small-btn">
+              🔄 <span id="refresh-times-text">Vakitleri Güncelle</span>
+            </button>
+          </div>
+          <ul id="prayer-list" class="prayer-list" aria-live="polite"></ul>
+        </div>
+      </section>
+
+      <section class="inspiration-section">
+        <div class="inspiration-header">
+          <h2 id="insp-title">Bugüne Özel Ayet</h2>
+          <p id="insp-help" class="hint-text small">
+            Ayet mealleri kısa ve hatırlatma amaçlıdır. Tam metin için mushaf veya güvenilir bir kaynağa bakın.
+          </p>
+        </div>
+        <div class="inspiration-card">
+          <div id="insp-visual" class="insp-visual"></div>
+          <div class="insp-body">
+            <p id="insp-text" class="insp-text">
+              Henüz konum seçilmedi. Bir konum seçtiğinde ilgili vakitle bağlantılı bir ayet burada görünecek.
+            </p>
+            <button id="btn-refresh-insp" class="btn tertiary">
+              🔁 <span id="btn-refresh-insp-text">Farklı bir ayet göster</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      
+      <section class="calendar-section space-y-3">
+        <h2 id="cal-title">Ramazan İmsakiyesi</h2>
+        <p id="cal-help" class="hint-text small">
+          Seçili konum için ilgili yıldaki Ramazan ayına ait imsak, sabah ve akşam vakitlerini gösterir.
+        </p>
+
+        <div class="ramadan-inline-countdown" id="ramadan-inline-countdown">
+          <p id="ramadan-inline-text" class="hint-text">
+            İmsak ve iftar geri sayımı Ramazan günlerinde burada görünecek.
+          </p>
+        </div>
+
+        <section class="ramadan-section space-y-3" id="ramadan-countdown">
+          <h2 id="ramadan-title">Ramazan</h2>
+          <div class="ramadan-countdown-grid grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="ramadan-panel bg-slate-900/80 rounded-xl border border-slate-700 p-3">
+              <h3 id="ramadan-countdown-title" class="text-sm font-semibold mb-1">
+                Ramazan Geri Sayımı
+              </h3>
+              <p id="ramadan-countdown-text" class="countdown-text small mb-1">
+                Ramazan günü için imsak ve iftar geri sayımı burada görünecek.
+              </p>
+              <p id="ramadan-imsak-count" class="text-xs text-slate-300"></p>
+              <p id="ramadan-iftar-count" class="text-xs text-slate-300"></p>
+              <!-- Eski fonksiyonlarla uyum için gizli elemanlar -->
+              <p id="ramadan-imsak-countdown" class="hidden"></p>
+              <p id="ramadan-iftar-countdown" class="hidden"></p>
+            </div>
+            <div class="bg-slate-900/80 rounded-xl border border-slate-700 p-3 flex flex-col gap-2">
+              <div class="field">
+                <label for="cal-year" id="cal-year-label">Yıl</label>
+                <input id="cal-year" type="number" min="2000" max="2100" class="w-full" />
+              </div>
+              <button id="btn-load-ramadan" class="btn secondary">
+                📅 <span id="cal-btn-text">Bu yılın Ramazan imsakiyesini getir</span>
+              </button>
+              <p id="cal-status" class="hint-text small mt-1"></p>
+            </div>
+          </div>
+        </section>
+
+        <div id="cal-table-container" class="calendar-table-wrapper mt-2"></div>
+      </section>
+
+</section>
+        <div id="cal-table-container" class="calendar-table-wrapper"></div>
+      </section>
+
+      
+
+            <footer class="app-footer">
+        <p id="footer-source" class="footer-main">
+          Vakit kaynağı: AlAdhan API
+        </p>
+        <p id="footer-note" class="footer-note">
+          Konum için tarayıcı/iOS, HTTPS sayfalarda izin vermeyi tercih edebilir. Çalışmazsa koordinatları veya yer adını kullanabilirsin.
+        </p>
+        <p class="footer-credit">
+          Yusuf Tekmil tarafından tasarlanmıştır.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="images.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

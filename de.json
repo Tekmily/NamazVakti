@@ -1,0 +1,114 @@
+{
+  "code": "de",
+  "ui": {
+    "title": "Gebetszeiten",
+    "subtitle": "Wo immer du auf der Welt bist 🌍",
+    "locationTitle": "Standortwahl",
+    "locationHelp": "Du kannst den automatischen Standort erlauben, Koordinaten eingeben oder nach Ortsnamen suchen.",
+    "locationButton": "Meinen Standort verwenden",
+    "latLabel": "Breitengrad (Latitude)",
+    "lonLabel": "Längengrad (Longitude)",
+    "manualHelp": "In Google Maps den Punkt lange drücken und die angezeigten Koordinaten hier einfügen.",
+    "manualButton": "Diese Koordinaten verwenden",
+    "nameLabel": "Suche nach Ortsnamen",
+    "namePlaceholder": "z. B. Istanbul, Türkei",
+    "nameHelp": "Du kannst Stadt, Region, Land oder eine Adresse eingeben.",
+    "statusWaiting": "Es wird auf die Auswahl eines Standorts gewartet...",
+    "statusGettingLocation": "Standort wird ermittelt, bitte im Browser erlauben...",
+    "statusLocationDenied": "Standortberechtigung verweigert. In den Einstellungen aktivieren oder Koordinaten/Ortsnamen verwenden.",
+    "statusLocationError": "Beim Ermitteln des Standorts ist ein Fehler aufgetreten.",
+    "statusInvalidCoords": "Bitte gültigen Breiten- und Längengrad eingeben.",
+    "statusInvalidName": "Kein Ort mit diesem Namen gefunden. Bitte Schreibweise prüfen.",
+    "statusLoadingTimes": "Gebetszeiten werden geladen...",
+    "statusSuccessTimes": "Gebetszeiten erfolgreich geladen.",
+    "statusErrorTimesPrefix": "Fehler beim Laden der Zeiten: ",
+    "inspTitle": "Tägliche Aya",
+    "inspHelp": "Dies sind kurze, sinngemäße Erinnerungen. Für den vollständigen Text bitte Mushaf oder eine vertrauenswürdige Quelle nutzen.",
+    "inspRefresh": "Weitere Aya anzeigen",
+    "refreshTimes": "Zeiten aktualisieren",
+    "footerSource": "Zeitquelle: AlAdhan API (internationale Methoden, für die Türkei an Diyanet angelehnt).",
+    "footerNote": "Für den Standort verlangen Browser/iOS meist HTTPS. Falls es nicht funktioniert, Koordinaten oder Ortsnamen verwenden.",
+    "coordsPrefix": "Ausgewählter Standort:",
+    "calTitle": "Ramadan‑Zeiten",
+    "calHelp": "Zeigt Imsak‑, Fajr‑ und Maghrib‑Zeiten für den Ramadan des gewählten Jahres am ausgewählten Standort.",
+    "calYearLabel": "Jahr",
+    "calBtnText": "Ramadan‑Zeiten für dieses Jahr laden",
+    "calStatusLoading": "Ramadan‑Zeiten werden geladen...",
+    "calStatusNoData": "Für dieses Jahr wurden keine Ramadan‑Daten gefunden. Jahr und Standort prüfen.",
+    "calStatusErrorPrefix": "Fehler beim Laden der Ramadan‑Zeiten: ",
+    "countdownTitle": "Gebetszeit-Erinnerung",
+    "countdownNoData": "Noch keine Gebetszeiten geladen.",
+    "countdownPrefix": "Verbleibende Zeit bis zum Ende des aktuellen Gebets",
+    "countdownFinished": "Alle Gebetszeiten für heute sind vorbei.",
+    "currentTimeTitle": "Aktuelle Uhrzeit",
+    "languageLabel": "🌐 Sprache",
+    "notifButton": "Benachrichtigungen aktivieren",
+    "notifUnsupported": "Benachrichtigungen werden in diesem Browser nicht unterstützt",
+    "notifActive": "Benachrichtigungen aktiv",
+    "notifDenied": "Benachrichtigungsberechtigung abgelehnt",
+    "ramadanCountdownTitle": "Ramadan-Countdown",
+    "ramadanCountdownText": "Countdown bis Suhur und Iftar",
+    "statusLocationUnsupported": "Dieser Browser unterstützt keine Standortdienste.",
+    "notifImsakSoon": "Noch 10 Minuten bis zur Imsak‑Zeit",
+    "notifIftarSoon": "Noch 10 Minuten bis zum Iftar",
+    "countdownCurrentAndNext": "Jetzt ist {current} • {next} in {minutes} Min.",
+    "countdownCurrentAndGeneric": "Jetzt ist {current} • nächste Gebetszeit in {minutes} Min.",
+    "ramadanImsakInTime": "Bis zur Imsak‑Zeit: {time}",
+    "ramadanIftarInTime": "Bis zum Iftar: {time}",
+    "ramadanImsakInMinutes": "Noch {minutes} Minuten bis zur Imsak‑Zeit",
+    "ramadanIftarInMinutes": "Noch {minutes} Minuten bis zum Iftar",
+    "ramadanInlinePlaceholder": "Im Ramadan wird hier der Countdown für Imsak und Iftar angezeigt.",
+    "ramadanInlineNoData": "Für heute sind keine Ramadan‑Countdown‑Daten verfügbar."
+  },
+  "prayerLabels": {
+    "Imsak": "Imsak",
+    "Fajr": "Fajr",
+    "Sunrise": "Sonnenaufgang",
+    "Dhuhr": "Dhuhr (Mittagsgebet)",
+    "Asr": "Asr (Nachmittagsgebet)",
+    "Maghrib": "Maghrib (Abendgebet)",
+    "Isha": "Isha (Nachtgebet)"
+  },
+  "calendarHeaders": {
+    "gregorian": "Gregorianisches Datum",
+    "hijri": "Hidschri‑Datum",
+    "imsak": "Imsak",
+    "fajr": "Fajr",
+    "maghrib": "Maghrib",
+    "isha": "Isha"
+  },
+  "prayerTexts": {
+    "Imsak": [
+      "„Sucht Hilfe in Geduld und Gebet.“ (Al‑Baqarah 2:45, sinngemäß)",
+      "„Gedenke deines Herrn morgens und abends.“ (Al‑Insan 76:25, sinngemäß)"
+    ],
+    "Fajr": [
+      "„Das Morgengebet wird bezeugt.“ (Al‑Isra 17:78, sinngemäß)",
+      "„Preise Ihn in der Nacht und am Tagesende.“ (Qaf 50:40, sinngemäß)"
+    ],
+    "Sunrise": [
+      "„Er hat Sonne und Mond euch dienstbar gemacht.“ (Ibrahim 14:33, sinngemäß)",
+      "„Er lässt die Morgendämmerung anbrechen.“ (Al‑An‘am 6:96, sinngemäß)"
+    ],
+    "Dhuhr": [
+      "„Verrichte das Gebet, wenn die Sonne sich neigt.“ (Al‑Isra 17:78, sinngemäß)",
+      "„Das Gebet ist den Gläubigen zu festgelegten Zeiten vorgeschrieben.“ (An‑Nisa 4:103, sinngemäß)"
+    ],
+    "Asr": [
+      "„Beim Zeitalter! Der Mensch ist wahrlich im Verlust.“ (Al‑Asr 103:1‑2, sinngemäß)",
+      "„Sie verrichten das Gebet und sind standhaft.“ (Al‑A‘raf 7:170, sinngemäß)"
+    ],
+    "Maghrib": [
+      "„Verrichte das Gebet bis zur Dunkelheit der Nacht.“ (Al‑Isra 17:78, sinngemäß)",
+      "„Preise deinen Herrn vor Sonnenuntergang.“ (Qaf 50:39, sinngemäß)"
+    ],
+    "Isha": [
+      "„Und in einem Teil der Nacht wirf dich vor Ihm nieder.“ (Al‑Insan 76:26, sinngemäß)",
+      "„Steh in der Nacht zum Gebet, außer einem kleinen Teil.“ (Al‑Muzzammil 73:2, sinngemäß)"
+    ]
+  },
+  "ramadanNotes": [
+    "„O ihr, die ihr glaubt! Euch ist das Fasten vorgeschrieben, wie es denen vor euch vorgeschrieben war.“ (Al‑Baqarah 2:183, sinngemäß)",
+    "„Wer Ramadan im Glauben und in der Hoffnung auf Lohn fastet, dem werden vergangene Sünden vergeben.“ (Hadith, sinngemäß)"
+  ]
+}
