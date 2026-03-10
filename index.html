@@ -593,20 +593,31 @@
                   </div>
 
                   {/* Ramadan Special Card */}
-                  <div className={`p-8 rounded-3xl border backdrop-blur-xl flex flex-col items-center justify-center text-center relative overflow-hidden shadow-2xl transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-br from-emerald-900/40 to-teal-900/40 border-emerald-500/30' : 'bg-gradient-to-br from-emerald-100 to-teal-100 border-emerald-300'}`}>
-                    {/* Decorative Mosque Silhouette */}
-                    <div className="absolute bottom-0 left-0 w-full h-24 opacity-20 pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1000 200\' fill=\'%2310b981\'%3E%3Cpath d=\'M0,200 L1000,200 L1000,150 L950,150 L950,100 L900,100 L900,50 L850,50 L850,150 L750,150 L750,80 L700,80 L700,150 L600,150 L600,60 L550,60 L550,150 L450,150 L450,90 L400,90 L400,150 L300,150 L300,40 L250,40 L250,150 L150,150 L150,70 L100,70 L100,150 L50,150 L50,100 L0,100 Z\'/%3E%3C/svg%3E")', backgroundSize: 'cover', backgroundPosition: 'bottom' }} />
-                    
-                    <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-semibold mb-4 uppercase tracking-wider shadow-inner ${theme === 'dark' ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300' : 'bg-white/60 border-emerald-200 text-emerald-700'}`}>
-                      <Moon className="w-3.5 h-3.5" />
-                      {t.ramadan.title}
+                  <div className={`p-8 rounded-3xl border flex flex-col items-center justify-center text-center relative overflow-hidden shadow-2xl transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-br from-emerald-900/60 to-teal-900/60 border-emerald-500/40' : 'bg-gradient-to-br from-emerald-100 to-teal-100 border-emerald-300'}`}>
+                    {/* Decorative Mosque Silhouette & Stars */}
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                       {/* Stars */}
+                       <div className="absolute top-4 right-8 text-emerald-400/30 text-2xl animate-pulse">✨</div>
+                       <div className="absolute top-12 left-6 text-emerald-400/20 text-xl animate-pulse" style={{ animationDelay: '1s' }}>⭐</div>
+                       <div className="absolute bottom-20 right-12 text-emerald-400/20 text-lg animate-pulse" style={{ animationDelay: '2s' }}>✨</div>
+                       
+                       {/* Mosque Silhouette */}
+                       <div className="absolute bottom-0 left-0 w-full h-32 opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1000 200\' fill=\'%2310b981\'%3E%3Cpath d=\'M0,200 L1000,200 L1000,150 L950,150 L950,100 L900,100 L900,50 L850,50 L850,150 L750,150 L750,80 L700,80 L700,150 L600,150 L600,60 L550,60 L550,150 L450,150 L450,90 L400,90 L400,150 L300,150 L300,40 L250,40 L250,150 L150,150 L150,70 L100,70 L100,150 L50,150 L50,100 L0,100 Z\'/%3E%3C/svg%3E")', backgroundSize: 'cover', backgroundPosition: 'bottom' }} />
                     </div>
                     
-                    <div className={`text-xl sm:text-2xl font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-600'}`}>
-                      {isIftar ? t.ramadan.iftar : t.ramadan.sahur}
+                    <div className="relative z-10 flex flex-col items-center">
+                      <div className={`inline-flex items-center gap-2 px-5 py-2 rounded-full border text-sm font-bold mb-6 uppercase tracking-widest shadow-lg ${theme === 'dark' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300' : 'bg-white/80 border-emerald-300 text-emerald-700'}`}>
+                        <span className="text-lg">🌙</span>
+                        {t.ramadan.title}
+                        <span className="text-lg">⭐</span>
+                      </div>
+                      
+                      <div className={`text-2xl sm:text-3xl font-bold mb-2 ${theme === 'dark' ? 'text-white drop-shadow-md' : 'text-slate-800'}`}>
+                        {isIftar ? t.ramadan.iftar : t.ramadan.sahur}
+                      </div>
+                      
+                      <FlipClock hours={rDiffHrs} minutes={rDiffMins} seconds={rDiffSecs} />
                     </div>
-                    
-                    <FlipClock hours={rDiffHrs} minutes={rDiffMins} seconds={rDiffSecs} />
                   </div>
 
                   {/* Ramadan Music / Media */}
