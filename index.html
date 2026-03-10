@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Namaz Vakitleri</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  
+  <!-- Babel for JSX/TS compilation in browser -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Framer Motion -->
+  <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #020617;
+      color: #f1f5f9;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" data-presets="react,typescript">
+    const { useState, useEffect } = React;
+    const { motion, AnimatePresence } = window.Motion;
+
+    // --- Icons (Replacing lucide-react) ---
+    const MapPin = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>;
+    const Search = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>;
+    const RefreshCw = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>;
+    const Navigation = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>;
+    const Moon = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>;
+    const Sun = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>;
+    const Clock = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>;
+    const Calendar = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>;
+    const AlertCircle = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>;
+    const BookOpen = ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>;
+
+    // --- App Logic ---
+    const translations = {
+      tr: {
+        title: "Namaz Vakitleri 🕌",
+        subtitle: "Dünyanın neresinde olursan ol 🌍",
+        searchPlaceholder: "Örn. İstanbul, Türkiye",
+        searchBtn: "Ara 🔍",
+        useLocation: "Konumumu Kullan 📍",
+        nextPrayer: "Sıradaki Vakit ✨",
+        timeLeft: "kaldı",
+        prayers: {
+          Imsak: "İmsak",
+          Fajr: "Sabah",
+          Sunrise: "Güneş",
+          Dhuhr: "Öğle",
+          Asr: "İkindi",
+          Maghrib: "Akşam",
+          Isha: "Yatsı"
+        },
+        loading: "Yükleniyor... ⏳",
+        error: "Bir hata oluştu ❌",
+        locationError: "Konum bulunamadı veya izin verilmedi 📍",
+        source: "Kaynak: AlAdhan API",
+        hijri: "Hicrî",
+        moonPhases: {
+          new: "Yeni Ay", waxingCrescent: "Hilal (Büyüyen)", firstQuarter: "İlk Dördün", waxingGibbous: "Şişkin Ay (Büyüyen)", full: "Dolunay", waningGibbous: "Şişkin Ay (Küçülen)", lastQuarter: "Son Dördün", waningCrescent: "Hilal (Küçülen)"
+        },
+        verses: [
+          { text: "Şüphesiz namaz, mü'minler üzerine vakitleri belirlenmiş bir farzdır.", ref: "Nisâ, 103" },
+          { text: "Beni anın ki ben de sizi anayım. Bana şükredin, nankörlük etmeyin.", ref: "Bakara, 152" },
+          { text: "Sabrederek ve namaz kılarak (Allah'tan) yardım dileyin.", ref: "Bakara, 45" },
+          { text: "Gündüzün iki ucunda ve gecenin gündüze yakın zamanlarında namaz kıl.", ref: "Hûd, 114" },
+          { text: "İman edip salih ameller işleyenler, namazı dosdoğru kılanlar... Onların mükafatı Rableri katındadır.", ref: "Bakara, 277" }
+        ]
+      },
+      en: {
+        title: "Prayer Times 🕌",
+        subtitle: "Wherever you are in the world 🌍",
+        searchPlaceholder: "E.g. London, UK",
+        searchBtn: "Search 🔍",
+        useLocation: "Use My Location 📍",
+        nextPrayer: "Next Prayer ✨",
+        timeLeft: "left",
+        prayers: {
+          Imsak: "Imsak",
+          Fajr: "Fajr",
+          Sunrise: "Sunrise",
+          Dhuhr: "Dhuhr",
+          Asr: "Asr",
+          Maghrib: "Maghrib",
+          Isha: "Isha"
+        },
+        loading: "Loading... ⏳",
+        error: "An error occurred ❌",
+        locationError: "Location not found or permission denied 📍",
+        source: "Source: AlAdhan API",
+        hijri: "Hijri",
+        moonPhases: {
+          new: "New Moon", waxingCrescent: "Waxing Crescent", firstQuarter: "First Quarter", waxingGibbous: "Waxing Gibbous", full: "Full Moon", waningGibbous: "Waning Gibbous", lastQuarter: "Last Quarter", waningCrescent: "Waning Crescent"
+        },
+        verses: [
+          { text: "Indeed, prayer has been decreed upon the believers a decree of specified times.", ref: "An-Nisa, 103" },
+          { text: "So remember Me; I will remember you. And be grateful to Me and do not deny Me.", ref: "Al-Baqarah, 152" },
+          { text: "And seek help through patience and prayer.", ref: "Al-Baqarah, 45" },
+          { text: "And establish prayer at the two ends of the day and at the approach of the night.", ref: "Hud, 114" },
+          { text: "Indeed, those who believe and do righteous deeds and establish prayer... will have their reward with their Lord.", ref: "Al-Baqarah, 277" }
+        ]
+      },
+      de: {
+        title: "Gebetszeiten 🕌",
+        subtitle: "Egal wo du bist auf der Welt 🌍",
+        searchPlaceholder: "Z.B. Berlin, Deutschland",
+        searchBtn: "Suchen 🔍",
+        useLocation: "Mein Standort 📍",
+        nextPrayer: "Nächstes Gebet ✨",
+        timeLeft: "verbleibend",
+        prayers: {
+          Imsak: "Imsak",
+          Fajr: "Fajr",
+          Sunrise: "Sonnenaufgang",
+          Dhuhr: "Dhuhr",
+          Asr: "Asr",
+          Maghrib: "Maghrib",
+          Isha: "Isha"
+        },
+        loading: "Wird geladen... ⏳",
+        error: "Ein Fehler ist aufgetreten ❌",
+        locationError: "Standort nicht gefunden oder abgelehnt 📍",
+        source: "Quelle: AlAdhan API",
+        hijri: "Hidschri",
+        moonPhases: {
+          new: "Neumond", waxingCrescent: "Zunehmende Sichel", firstQuarter: "Erstes Viertel", waxingGibbous: "Zunehmender Mond", full: "Vollmond", waningGibbous: "Abnehmender Mond", lastQuarter: "Letztes Viertel", waningCrescent: "Abnehmende Sichel"
+        },
+        verses: [
+          { text: "Wahrlich, das Gebet ist den Gläubigen zu bestimmten Zeiten vorgeschrieben.", ref: "An-Nisa, 103" },
+          { text: "So gedenkt Meiner, damit Ich eurer gedenke. Und seid Mir dankbar und verleugnet Mich nicht.", ref: "Al-Baqarah, 152" },
+          { text: "Und sucht Hilfe in der Geduld und im Gebet.", ref: "Al-Baqarah, 45" },
+          { text: "Und verrichte das Gebet an den beiden Tagesenden und in den ersten Stunden der Nacht.", ref: "Hud, 114" },
+          { text: "Wahrlich, diejenigen, die glauben und gute Werke tun und das Gebet verrichten... haben ihren Lohn bei ihrem Herrn.", ref: "Al-Baqarah, 277" }
+        ]
+      }
+    };
+
+    const getMoonPhase = (date) => {
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      if (month < 3) { year--; month += 12; }
+      ++month;
+      let c = 365.25 * year;
+      let e = 30.6 * month;
+      let jd = c + e + day - 694039.09;
+      jd /= 29.5305882;
+      let b = Math.floor(jd);
+      jd -= b;
+      let b2 = Math.round(jd * 8);
+      if (b2 >= 8) b2 = 0;
+      const phases = ['new', 'waxingCrescent', 'firstQuarter', 'waxingGibbous', 'full', 'waningGibbous', 'lastQuarter', 'waningCrescent'];
+      const emojis = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
+      return { key: phases[b2], emoji: emojis[b2] };
+    };
+
+    const verseImages = [
+      "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1564121211835-e88c852648ab?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800"
+    ];
+
+    function App() {
+      const [lang, setLang] = useState('tr');
+      const [location, setLocation] = useState(null);
+      const [searchQuery, setSearchQuery] = useState('');
+      const [prayerData, setPrayerData] = useState(null);
+      const [loading, setLoading] = useState(false);
+      const [error, setError] = useState('');
+      const [currentTime, setCurrentTime] = useState(new Date());
+      const [verseIndex, setVerseIndex] = useState(0);
+
+      const t = translations[lang];
+      const moonPhase = getMoonPhase(currentTime);
+
+      useEffect(() => {
+        const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+        return () => clearInterval(timer);
+      }, []);
+
+      useEffect(() => {
+        const verseTimer = setInterval(() => {
+          setVerseIndex((prev) => (prev + 1) % t.verses.length);
+        }, 15000);
+        return () => clearInterval(verseTimer);
+      }, [t.verses.length]);
+
+      const fetchPrayerTimes = async (lat, lon, name) => {
+        setLoading(true);
+        setError('');
+        try {
+          const timestamp = Math.floor(Date.now() / 1000);
+          const res = await fetch(`https://api.aladhan.com/v1/timings/${timestamp}?latitude=${lat}&longitude=${lon}&method=3`);
+          const data = await res.json();
+          if (data.code === 200) {
+            setPrayerData(data.data);
+            setLocation({ lat, lon, name });
+            localStorage.setItem('lastLocation', JSON.stringify({ lat, lon, name }));
+          } else {
+            setError(t.error);
+          }
+        } catch (err) {
+          setError(t.error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      const handleSearch = async () => {
+        if (!searchQuery) return;
+        setLoading(true);
+        setError('');
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(searchQuery)}&format=json&limit=1&accept-language=${lang}`);
+          const data = await res.json();
+          if (data && data.length > 0) {
+            const lat = parseFloat(data[0].lat);
+            const lon = parseFloat(data[0].lon);
+            const name = data[0].display_name.split(',')[0] + ', ' + data[0].display_name.split(',').pop();
+            fetchPrayerTimes(lat, lon, name);
+          } else {
+            setError(t.locationError);
+            setLoading(false);
+          }
+        } catch (err) {
+          setError(t.error);
+          setLoading(false);
+        }
+      };
+
+      const handleAutoLocation = () => {
+        if (!navigator.geolocation) {
+          setError(t.locationError);
+          return;
+        }
+        setLoading(true);
+        setError('');
+        navigator.geolocation.getCurrentPosition(
+          async (pos) => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            try {
+              const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=${lang}`);
+              const data = await res.json();
+              const name = data.address?.city || data.address?.town || data.address?.village || data.display_name.split(',')[0];
+              fetchPrayerTimes(lat, lon, name);
+            } catch {
+              fetchPrayerTimes(lat, lon, `${lat.toFixed(4)}, ${lon.toFixed(4)}`);
+            }
+          },
+          (err) => {
+            setError(t.locationError);
+            setLoading(false);
+          },
+          { timeout: 10000, maximumAge: 60000, enableHighAccuracy: true }
+        );
+      };
+
+      useEffect(() => {
+        const saved = localStorage.getItem('lastLocation');
+        if (saved) {
+          const { lat, lon, name } = JSON.parse(saved);
+          fetchPrayerTimes(lat, lon, name);
+        }
+      }, []);
+
+      let nextPrayer = null;
+      let countdownStr = "";
+      
+      if (prayerData) {
+        const timezone = prayerData.meta.timezone;
+        const tzNowStr = currentTime.toLocaleString("en-US", { timeZone: timezone });
+        const tzNow = new Date(tzNowStr);
+        
+        const prayerKeys = ["Imsak", "Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
+        const upcoming = prayerKeys.map(key => {
+          const [hours, minutes] = prayerData.timings[key].split(':').map(Number);
+          const prayerTime = new Date(tzNow);
+          prayerTime.setHours(hours, minutes, 0, 0);
+          
+          if (prayerTime.getTime() < tzNow.getTime()) {
+            prayerTime.setDate(prayerTime.getDate() + 1);
+          }
+          return { key, time: prayerData.timings[key], date: prayerTime };
+        }).sort((a, b) => a.date.getTime() - b.date.getTime());
+        
+        nextPrayer = upcoming[0];
+        
+        const diffMs = nextPrayer.date.getTime() - tzNow.getTime();
+        const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
+        const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+        const diffSecs = Math.floor((diffMs % (1000 * 60)) / 1000);
+        
+        countdownStr = `${String(diffHrs).padStart(2, '0')}:${String(diffMins).padStart(2, '0')}:${String(diffSecs).padStart(2, '0')}`;
+      }
+
+      const containerVariants = {
+        hidden: { opacity: 0 },
+        show: {
+          opacity: 1,
+          transition: { staggerChildren: 0.1 }
+        }
+      };
+
+      const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+      };
+
+      return (
+        <div className="min-h-screen bg-[#020617] text-slate-100 font-sans selection:bg-sky-500/30 relative overflow-hidden">
+          <motion.div 
+            animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.3, 0.2] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-sky-900/30 blur-[120px] pointer-events-none"
+          />
+          <motion.div 
+            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-indigo-900/30 blur-[120px] pointer-events-none"
+          />
+
+          <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-6 relative z-10">
+            
+            <motion.header 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/50 p-6 rounded-3xl border border-slate-800/60 backdrop-blur-xl shadow-2xl"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-indigo-500 flex items-center justify-center shadow-lg shadow-sky-500/30">
+                  <Moon className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-2xl font-bold text-white tracking-tight drop-shadow-sm">
+                    {t.title}
+                  </h1>
+                  <p className="text-slate-400 text-sm mt-0.5">{t.subtitle}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="hidden md:flex items-center gap-2 bg-slate-800/60 border border-slate-700/50 px-4 py-2 rounded-full shadow-inner">
+                  <span className="text-xl">{moonPhase.emoji}</span>
+                  <span className="text-sm font-medium text-slate-300">
+                    {t.moonPhases[moonPhase.key]}
+                  </span>
+                </div>
+                <select 
+                  value={lang} 
+                  onChange={(e) => {
+                    setLang(e.target.value);
+                    setVerseIndex(0);
+                  }}
+                  className="bg-slate-800/80 border border-slate-700/50 rounded-full px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-sky-500 transition-shadow cursor-pointer shadow-inner"
+                >
+                  <option value="tr">🇹🇷 TR</option>
+                  <option value="en">🇬🇧 EN</option>
+                  <option value="de">🇩🇪 DE</option>
+                </select>
+              </div>
+            </motion.header>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+              className="bg-slate-900/50 p-6 rounded-3xl border border-slate-800/60 backdrop-blur-xl shadow-2xl space-y-5"
+            >
+              <div className="flex flex-col md:flex-row gap-3">
+                <div className="relative flex-1">
+                  <input 
+                    type="text" 
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                    placeholder={t.searchPlaceholder}
+                    className="w-full bg-slate-950/60 border border-slate-700/50 rounded-2xl pl-12 pr-4 py-4 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all placeholder:text-slate-500 shadow-inner"
+                  />
+                  <Search className="absolute left-4 top-4 w-5 h-5 text-slate-400" />
+                </div>
+                <div className="flex gap-3">
+                  <button 
+                    onClick={handleSearch}
+                    disabled={loading}
+                    className="flex-1 md:flex-none bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white px-8 py-4 rounded-2xl font-semibold transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 active:scale-95"
+                  >
+                    {loading ? <RefreshCw className="w-5 h-5 animate-spin" /> : t.searchBtn}
+                  </button>
+                  <button 
+                    onClick={handleAutoLocation}
+                    disabled={loading}
+                    className="flex-1 md:flex-none bg-slate-800 hover:bg-slate-700 border border-slate-700/50 text-white px-6 py-4 rounded-2xl font-medium transition-all flex items-center justify-center gap-2 active:scale-95 shadow-lg"
+                    title={t.useLocation}
+                  >
+                    <Navigation className="w-5 h-5 text-sky-400" />
+                    <span className="md:hidden">{t.useLocation}</span>
+                  </button>
+                </div>
+              </div>
+              
+              <AnimatePresence>
+                {error && (
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="flex items-center gap-2 text-red-400 text-sm px-2 bg-red-500/10 py-3 rounded-xl border border-red-500/20"
+                  >
+                    <AlertCircle className="w-4 h-4" />
+                    {error}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              
+              {location && (
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex items-center gap-2 text-sm text-slate-300 px-4 bg-emerald-500/10 py-3 rounded-xl border border-emerald-500/20 inline-flex shadow-inner"
+                >
+                  <MapPin className="w-4 h-4 text-emerald-400" />
+                  <span className="truncate max-w-[250px] sm:max-w-md font-medium">{location.name}</span>
+                </motion.div>
+              )}
+            </motion.div>
+
+            {prayerData && (
+              <div className="grid lg:grid-cols-12 gap-6">
+                
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="lg:col-span-5 space-y-6"
+                >
+                  <div className="bg-gradient-to-br from-sky-900/40 to-indigo-900/40 p-8 rounded-3xl border border-sky-500/30 backdrop-blur-xl flex flex-col items-center justify-center text-center relative overflow-hidden shadow-2xl">
+                    <motion.div 
+                      animate={{ opacity: [0.5, 1, 0.5] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-400 via-indigo-400 to-sky-400"
+                    />
+                    
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/30 text-sky-300 text-xs font-semibold mb-6 uppercase tracking-wider shadow-inner">
+                      <Clock className="w-3.5 h-3.5" />
+                      {t.nextPrayer}
+                    </div>
+                    
+                    <div className="text-4xl sm:text-5xl font-bold tracking-tight mb-3 text-white drop-shadow-md">
+                      {t.prayers[nextPrayer?.key]}
+                    </div>
+                    
+                    <div className="text-5xl sm:text-6xl font-mono text-sky-100 mb-6 drop-shadow-[0_0_15px_rgba(56,189,248,0.5)] font-light tracking-wider">
+                      {countdownStr}
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row items-center gap-3 text-sm text-slate-300 bg-slate-950/50 px-6 py-3 rounded-2xl border border-slate-800/60 shadow-inner w-full justify-center">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-indigo-400" />
+                        <span className="font-medium">{prayerData.date.readable}</span>
+                      </div>
+                      <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-600"></div>
+                      <div className="font-medium text-sky-200">
+                        {prayerData.date.hijri.day} {prayerData.date.hijri.month.en}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative overflow-hidden rounded-3xl border border-slate-800/60 shadow-2xl group h-48">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={verseIndex}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="absolute inset-0"
+                      >
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center"
+                          style={{ backgroundImage: `url(${verseImages[verseIndex % verseImages.length]})` }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/70 to-slate-900/40" />
+                      </motion.div>
+                    </AnimatePresence>
+                    
+                    <div className="relative h-full p-6 flex flex-col justify-between z-10">
+                      <div className="flex items-center gap-2 text-sky-300/80 mb-2">
+                        <BookOpen className="w-4 h-4" />
+                      </div>
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={verseIndex}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.5, delay: 0.2 }}
+                          className="flex-1 flex flex-col justify-end"
+                        >
+                          <p className="text-white font-medium text-sm sm:text-base leading-relaxed drop-shadow-md italic">
+                            "{t.verses[verseIndex].text}"
+                          </p>
+                          <p className="text-sky-300 text-xs font-semibold mt-3 text-right">
+                            — {t.verses[verseIndex].ref}
+                          </p>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+                  </div>
+
+                  <div className="bg-slate-900/50 p-6 rounded-3xl border border-slate-800/60 backdrop-blur-xl shadow-2xl">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-slate-400 font-medium">{t.source}</span>
+                      <span className="text-slate-300 bg-slate-800/80 px-3 py-1 rounded-lg border border-slate-700/50">{prayerData.meta.timezone}</span>
+                    </div>
+                    <div className="md:hidden mt-4 pt-4 border-t border-slate-800/60 flex items-center justify-between">
+                      <span className="text-slate-400 font-medium">Ay Durumu</span>
+                      <div className="flex items-center gap-2 bg-slate-800/60 border border-slate-700/50 px-3 py-1.5 rounded-xl">
+                        <span className="text-lg">{moonPhase.emoji}</span>
+                        <span className="text-sm font-medium text-slate-300">
+                          {t.moonPhases[moonPhase.key]}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="show"
+                  className="lg:col-span-7 bg-slate-900/50 p-6 rounded-3xl border border-slate-800/60 backdrop-blur-xl shadow-2xl"
+                >
+                  <div className="space-y-3">
+                    {["Imsak", "Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"].map((key) => {
+                      const isNext = nextPrayer?.key === key;
+                      
+                      let Icon = Moon;
+                      if (key === 'Sunrise' || key === 'Fajr') Icon = Sun;
+                      if (key === 'Dhuhr' || key === 'Asr') Icon = Sun;
+                      
+                      return (
+                        <motion.div 
+                          variants={itemVariants}
+                          key={key}
+                          className={`flex items-center justify-between p-4 sm:p-5 rounded-2xl transition-all duration-300 ${
+                            isNext 
+                              ? 'bg-gradient-to-r from-sky-500/20 to-indigo-500/20 border border-sky-400/40 shadow-[0_0_25px_rgba(56,189,248,0.15)] scale-[1.02]' 
+                              : 'bg-slate-950/50 border border-slate-800/50 hover:bg-slate-800/60 hover:border-slate-700/50'
+                          }`}
+                        >
+                          <div className="flex items-center gap-4">
+                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-inner ${
+                              isNext ? 'bg-sky-500/25 text-sky-300' : 'bg-slate-800/80 text-slate-400'
+                            }`}>
+                              <Icon className="w-6 h-6" />
+                            </div>
+                            <span className={`text-lg sm:text-xl font-medium ${isNext ? 'text-sky-300 font-semibold' : 'text-slate-200'}`}>
+                              {t.prayers[key]}
+                            </span>
+                          </div>
+                          <span className={`font-mono text-2xl sm:text-3xl tracking-tight ${isNext ? 'text-white font-bold drop-shadow-md' : 'text-slate-300'}`}>
+                            {prayerData.timings[key]}
+                          </span>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+
+              </div>
+            )}
+
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
